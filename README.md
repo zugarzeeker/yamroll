@@ -9,3 +9,9 @@ A testing runner for problem solving programming.
 - `yamroll -r "./a.out" -t "example"` for run testcase that has `example.in` input and `example.out` as expected output.
 
 *Note: `-r` (runtime) and `-t` (test case)*
+
+## Example
+```bash
+cd example
+yamroll -r 'python add.py'
+```
