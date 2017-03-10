@@ -1,14 +1,14 @@
 {
   "name": "yamroll",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A testing runner for problem solving programming.",
   "bin": {
-    "yamroll": "./index.js"
+    "yamroll": "./setup.js"
   },
-  "main": "index.js",
+  "main": "setup.js",
   "scripts": {
-    "start": "./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "./setup.js",
+    "check": "mocha test.js"
   },
   "repository": {
     "type": "git",

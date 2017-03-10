@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const cp = require('child_process')
+const path = require('path')
 
 const removeQuote = (s) => (
   s.replace(/'$/, '')
@@ -34,10 +35,10 @@ const setupEnvironment = () => {
   process.env.command = command
 }
 
-
+const testingCommand = `${require.resolve('.bin/mocha')} ${path.resolve('test.js')}`
 const runTest = () => {
   try {
-    cp.execSync('mocha test.js', { stdio: 'inherit' })
+    cp.execSync(testingCommand, { stdio: 'inherit' })
   } catch (e) {
     process.exit(1)
   }
