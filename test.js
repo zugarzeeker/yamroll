@@ -5,30 +5,32 @@ const cp = require('child_process')
 const assert = require('power-assert')
 
 const solve = (command, input) => new Promise((resolve) => {
-  const child = cp.execSync(command)
+  const child = cp.exec(command)
   child.stdin.write(input)
   child.stdout.on('data', (output) => {
-    resolve(output)
+    child.on('close', () => {
+      resolve(output)
+    })
   })
   child.stdin.end()
 })
 
 const test = (command, testCases) => {
   describe(command, () => {
-    testCases.map((testCase, i) => {
-      const input = fs.readFileSync(`${testCase}.in`)
-      const expectedOutput = fs.readFileSync(`${testCase}.out`)
-      solve(command, input).then((actualOutput) => {
-        it(`should solve [${i + 1}][${testCase}] correctly`, () => {
-          assert(actualOutput == expectedOutput)
+    testCases.map((testCase) => {
+      const input = fs.readFileSync(`${testCase}.in`, 'utf8')
+      const expectedOutput = fs.readFileSync(`${testCase}.out`, 'utf8')
+      it(`should solve [${testCase}] correctly`, () => (
+        solve(command, input).then((actualOutput) => {
+          assert.equal(actualOutput, expectedOutput)
         })
-      })
+      ))
     })
   })
 }
 
 const start = () => {
-  const command = JSON.parse(process.env.command)
+  const command = process.env.command
   const testCases = JSON.parse(process.env.testCases)
   test(command, testCases)
 }

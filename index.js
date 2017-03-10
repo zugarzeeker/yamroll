@@ -31,12 +31,16 @@ const setupEnvironment = () => {
   }
 
   process.env.testCases = JSON.stringify(testCases)
-  process.env.command = JSON.stringify(command)
+  process.env.command = command
 }
 
 
 const runTest = () => {
-  cp.execSync('mocha test.js')
+  try {
+    cp.execSync('mocha test.js', { stdio: 'inherit' })
+  } catch (e) {
+    process.exit(1)
+  }
 }
 
 setupEnvironment()
