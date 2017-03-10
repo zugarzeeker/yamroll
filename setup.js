@@ -35,7 +35,7 @@ const setupEnvironment = () => {
   process.env.command = command
 }
 
-const testingCommand = `${require.resolve('.bin/mocha')} ${path.resolve('test.js')}`
+const testingCommand = `${require.resolve('.bin/mocha')} ${__dirname}/test.js`
 const runTest = () => {
   try {
     cp.execSync(testingCommand, { stdio: 'inherit' })
