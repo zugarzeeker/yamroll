@@ -1,6 +1,6 @@
 {
   "name": "yamroll",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A testing runner for problem solving programming.",
   "bin": {
     "yamroll": "./index.js"
