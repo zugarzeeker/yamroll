@@ -15,3 +15,6 @@ A testing runner for problem solving programming.
 cd example
 yamroll -r 'python add.py'
 ```
+
+## Screenshots
+![running test](screenshots/test.jpg)
