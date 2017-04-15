@@ -13,7 +13,7 @@ const removeQuote = (s) => (
 
 const getTestCases = () => {
   const files = fs.readdirSync('.')
-  return files.filter(file => file.includes('.in')).map(name => name.replace('.in', ''))
+  return files.filter(file => file.endsWith('.in')).map(name => name.replace('.in', ''))
 }
 
 const setupEnvironment = () => {
